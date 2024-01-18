@@ -1,0 +1,82 @@
+:root {
+  --bg: white;
+  --text: black;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 350px;
+}
+
+.function-container {
+  display: flex;
+  gap: 10px;
+}
+
+.txt {
+  font-size: 1.1rem;
+  font-weight: 500;
+  min-width: 80px;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.api-key__input {
+  padding: 10px;
+  border: 1px solid var(--bg);
+  border-radius: 3px;
+  background-color: var(--text);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.api-key__submit {
+  margin-left: 5px;
+  padding: 8px 15px;
+  border: 1px solid var(--bg);
+  border-radius: 3px;
+  background-color: var(--text);
+  color: var(--bg);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.api-key__submit:hover {
+  opacity: 0.8;
+}
+
+.api-key__msg {
+  display: none;
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: rgb(36, 36, 36);
+    --text: white;
+  }
+}

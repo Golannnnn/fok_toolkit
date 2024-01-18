@@ -1,0 +1,87 @@
+/*
+CSS naming follows bem practices
+see: https://getbem.com/naming
+*/
+
+/* the overflow needs to be visible on the navbar in order to see the hover element of the blocker button */
+#navbar,
+#navbar > .topbarbody,
+#navbar > *,
+.navbar > div,
+.navbar div,
+.topbarbody {
+  overflow: visible !important;
+}
+
+/* move the icon bar of a post to the left to make room for the block and hide buttons */
+.iconbar {
+  right: 300px !important;
+}
+
+.blocker__navbar__button {
+  position: relative !important;
+}
+
+.blocker__navbar__overview,
+.blocker__navbar__overview > * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.blocker__navbar__overview {
+  display: none;
+  position: absolute !important;
+  min-width: 250px;
+  max-width: 350px;
+  left: -1px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.blocker__navbar__overview__title {
+  font-weight: bold;
+  align-self: center;
+}
+
+.blocker__navbar__overview__list {
+  width: 100%;
+  align-self: flex-start;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.blocker__navbar__overview__list__row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  align-items: center;
+}
+
+.blocker__navbar__overview__list__row:hover {
+  background-color: #ccc;
+}
+
+.blocker__navbar__overview__list__row > * {
+  line-height: normal;
+}
+
+.blocker__navbar__overview__list__row__button {
+  font-size: 0.9em;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.blocker__navbar__button:hover .blocker__navbar__overview {
+  display: flex !important;
+}

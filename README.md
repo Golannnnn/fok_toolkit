@@ -7,9 +7,9 @@ Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scrip
 
 ## Features
 
-- [x] [Gebruikers blokkeren][#blocker]
-- [x] [Plaatjes uploaden met één klik][#uploader]
-- [x] [Scrollen naar boven en beneden met één klik][#scroller]
+- [x] [Gebruikers blokkeren](#blocker)
+- [x] [Plaatjes uploaden met één klik](#uploader)
+- [x] [Scrollen naar boven en beneden met één klik](#scroller)
 - [ ] Mentions geschiedenis
 
 ## Verzoeken en bugs
@@ -20,28 +20,28 @@ Heb je een verzoek voor een nieuwe feature? Of een bug? Laat het weten in het [c
 
 De extensie is open source en iedereen kan meehelpen. Fork de repo, lees de [HOWTO](HOWTO.md) en maak een pull request. Kom je er niet uit? Stel je vraag in [...](https://forum.fok.nl/topic/).
 
-### Blocker
+## Blocker
 
-Voegt een knop toe aan elke post om de gebruiker te blokkeren of om een specifieke post te verbergen:
+#### Voegt een knop toe aan elke post om de gebruiker te blokkeren of om een specifieke post te verbergen:
 
 ![blocker afbeelding 1](public/readme/blocker_2.png)
 
-Voegt een knop toe aan de header van de pagina om geblokkeerde gebruikers te bekijken en deblokkeren:
+#### Voegt een knop toe aan de header van de pagina om geblokkeerde gebruikers te bekijken en deblokkeren:
 
 ![blocker afbeelding 2](public/readme/blocker_1.png)
 
-### Uploader
+## Uploader
 
-Voegt een knop toe aan de editor om een plaatje te uploaden:
+#### Voegt een knop toe aan de editor om een plaatje te uploaden:
 
 ![uploader video](public/readme/uploader.mov)
 
-\*Je moet eerst een [account aanmaken op imgbb](https://imgbb.com/signup), een [api key genereren](https://api.imgbb.com) en daarna de api key invoeren in de extensie:
+#### Je moet eerst een [account aanmaken op imgbb](https://imgbb.com/signup), een [api key genereren](https://api.imgbb.com) en daarna de api key invoeren in de extensie:
 
 ![uploader afbeeling 1](public/readme/uploader_1.png)
 
-### Scroller
+## Scroller
 
-Voegt twee knoppen toe aan linksonder in de pagina om naar boven en beneden te scrollen:
+#### Voegt twee knoppen toe aan linksonder in de pagina om naar boven en beneden te scrollen:
 
 ![scroller afbeeling 1](public/readme/scroller.png)

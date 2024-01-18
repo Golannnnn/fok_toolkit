@@ -42,6 +42,6 @@ De extensie is open source en iedereen kan meehelpen. Fork de repo, lees de [HOW
 
 ## Scroller
 
-#### Voegt twee knoppen toe aan linksonder in de pagina om naar boven en beneden te scrollen:
+#### Voegt twee knoppen toe aan rechtsonder in de pagina om naar boven en beneden te scrollen:
 
 ![scroller afbeeling 1](public/readme/scroller.png)

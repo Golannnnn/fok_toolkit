@@ -36,7 +36,7 @@ Voegt een knop toe aan de header van de pagina om geblokkeerde gebruikers te bek
 
 Voegt een knop toe aan de editor om een plaatje te uploaden:
 
-![uploader video](public/readme/uploader.mov)
+![uploader video](public/readme/uploader_480.mov)
 
 Je moet eerst een [account aanmaken op imgbb](https://imgbb.com/signup), een [api key genereren](https://api.imgbb.com) en daarna de api key invoeren in de extensie:
 

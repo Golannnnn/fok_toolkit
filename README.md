@@ -5,6 +5,8 @@ Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scrip
 - Alleen actief wanneer je op het forum en in een topic bent (forum.fok.nl/topic/).
 - Alleen de volgende data wordt opgeslagen in de lokale opslag van je browser: gebruikersnamen van users die je blockt en een api key voor de plaatjes upload service. Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
 
+De extensie folders kan je hier downloaden: https://github.com/Golannnnn/fok_toolkit/releases/
+
 ## Features
 
 - [x] [Gebruikers blokkeren](#blocker)
@@ -45,10 +47,6 @@ Je moet eerst een [account aanmaken op imgbb](https://imgbb.com/signup), een [ap
 Voegt twee knoppen toe aan rechtsonder in de pagina om naar boven en beneden te scrollen:
 
 ![scroller afbeeling 1](public/readme/scroller.png)
-
-## Download de extensie folders voor Firefox and Chrome:
-
-https://drive.google.com/drive/folders/1xt0dFUY810RMkLOX9mZzEs6o-IgWnY9b?usp=drive_link
 
 ## How to manually load the extension in Firefox:
 

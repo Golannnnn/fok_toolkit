@@ -45,3 +45,22 @@ Je moet eerst een [account aanmaken op imgbb](https://imgbb.com/signup), een [ap
 Voegt twee knoppen toe aan rechtsonder in de pagina om naar boven en beneden te scrollen:
 
 ![scroller afbeeling 1](public/readme/scroller.png)
+
+## Download de extensie folders voor Firefox and Chrome:
+
+https://drive.google.com/drive/folders/1xt0dFUY810RMkLOX9mZzEs6o-IgWnY9b?usp=drive_link
+
+## How to manually load the extension in Firefox:
+
+1. Open Firefox and type `about:addons` in the URL bar.
+2. Click on the gear icon in the top right corner and select `Debug Add-ons`.
+3. Click on `Load Temporary Add-on...` and select the `manifest.json` file from the extension folder.
+4. Click on the `extensions` icon in the top right corner.
+5. Click on the `gear` icon in the top right corner and select `Pin to Toolbar`.
+
+## How to manually load the extension in Chrome:
+
+1. Open Chrome and type `chrome://extensions` in the URL bar.
+2. Enable `Developer mode` in the top right corner.
+3. Click on `Load unpacked` and select the extension folder.
+4. Click on the `extensions` icon in the top right corner and pin the extension to the toolbar.

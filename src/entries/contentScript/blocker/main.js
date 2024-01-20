@@ -56,6 +56,7 @@ import browser from "webextension-polyfill";
   }
 
   function createPostButtons(el) {
+    if (!el) return;
     const blockEl = document.createElement("span");
     const hideEl = document.createElement("span");
 

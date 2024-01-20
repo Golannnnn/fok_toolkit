@@ -12,7 +12,7 @@ De extensie folders kan je hier downloaden: https://github.com/Golannnnn/fok_too
 - [x] [Gebruikers blokkeren](#blocker)
 - [x] [Plaatjes uploaden met één klik](#uploader)
 - [x] [Scrollen naar boven en beneden met één klik](#scroller)
-- [ ] Mentions geschiedenis
+- [ ] Mentions geschiedenis (coming soon)
 
 ## Verzoeken en bugs
 

@@ -16,6 +16,12 @@ const sharedManifest = {
       matches: ["*://*.forum.fok.nl/topic/*"],
       run_at: "document_end",
     },
+    {
+      js: ["src/entries/contentScript/mentions/main.js"],
+      css: ["src/entries/contentScript/mentions/style.css"],
+      matches: ["*://*.forum.fok.nl/*"],
+      run_at: "document_idle",
+    },
   ],
   icons: {
     16: "icons/16.png",
@@ -23,6 +29,10 @@ const sharedManifest = {
     48: "icons/48.png",
     96: "icons/96.png",
     128: "icons/128.png",
+  },
+  options_ui: {
+    page: "src/entries/options/index.html",
+    open_in_tab: true,
   },
   permissions: ["activeTab", "storage"],
 };
@@ -40,7 +50,15 @@ const browserAction = {
 
 const ManifestV2 = {
   ...sharedManifest,
+  background: {
+    scripts: ["src/entries/background/script.js"],
+    persistent: true,
+  },
   browser_action: browserAction,
+  options_ui: {
+    ...sharedManifest.options_ui,
+    chrome_style: false,
+  },
   permissions: [
     ...sharedManifest.permissions,
     "https://api.imgbb.com/1/upload",
@@ -51,6 +69,9 @@ const ManifestV2 = {
 const ManifestV3 = {
   ...sharedManifest,
   action: browserAction,
+  background: {
+    service_worker: "src/entries/background/serviceWorker.js",
+  },
   host_permissions: ["https://api.imgbb.com/1/upload"],
   web_accessible_resources: [
     {

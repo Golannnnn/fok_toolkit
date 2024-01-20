@@ -1,10 +1,10 @@
 import browser from "webextension-polyfill";
 
 (function () {
-  if (window.hasMentionsRun) {
+  if (window.hasScrollerRun) {
     return;
   }
-  window.hasMentionsRun = true;
+  window.hasScrollerRun = true;
 
   const pageWrapper = document.querySelector("#pageWrapper");
   const scrollDownIcon = document.createElement("img");

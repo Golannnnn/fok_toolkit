@@ -1,9 +1,10 @@
 import browser from "webextension-polyfill";
 
 (function () {
-  if (document.querySelector(".uploader__input")) {
+  if (window.hasMentionsRun) {
     return;
   }
+  window.hasMentionsRun = true;
 
   const editorButtonsLeft =
     document.querySelector(".editorbuttons").children[2];

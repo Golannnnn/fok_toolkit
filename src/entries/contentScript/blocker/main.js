@@ -1,13 +1,10 @@
 import browser from "webextension-polyfill";
 
 (function () {
-  if (
-    document.querySelector(".blocker__navbar__button") &&
-    document.querySelector(".blocker__post__btn--hide") &&
-    document.querySelector(".blocker__post__btn--block")
-  ) {
+  if (window.hasMentionsRun) {
     return;
   }
+  window.hasMentionsRun = true;
 
   const doc = document.body || document || window;
   let posts = document.querySelectorAll("[data-member]");

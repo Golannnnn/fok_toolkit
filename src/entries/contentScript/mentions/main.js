@@ -11,7 +11,8 @@ import browser from "webextension-polyfill";
   const doc = document.body || document || window;
 
   createNavbarButton();
-  getAllMentionsOnInit();
+  // why does chrome need a timeout here and not firefox???
+  setTimeout(() => getAllMentionsOnInit(), 500);
 
   const mentionBtn = document.querySelector(".mentions__navbar__button");
 
@@ -31,13 +32,13 @@ import browser from "webextension-polyfill";
   }
 
   function getAllMentionsOnInit() {
-    const container = document.querySelector("#jGrowl");
-    if (!container) return;
-    const messageWrapper = container.querySelectorAll(".jGrowl-message");
+    const messageWrapper = document.querySelectorAll(".jGrowl-message");
     if (!messageWrapper?.length) return;
     const formattedMentions = getFormattedMentions(messageWrapper);
     setUniqueMentionsToLocalStorage(formattedMentions);
   }
+
+  // CHECK: if we need to sort by date, because id might be enough to sort by. Newer mentions have higher id's...
 
   function getFormattedMentions(wrapper) {
     let formattedMentions = [];
@@ -45,17 +46,24 @@ import browser from "webextension-polyfill";
       const id = message.children[0].dataset.id;
       const link = message.querySelector(".quotedPostLink");
       const href = link.href;
-      const regex = /<[^>]*>/g;
-      const text = message.innerHTML.replace(regex, "");
-      const mention = { id, href, text };
-      formattedMentions.unshift(mention);
+      const text = message.textContent;
+      const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
+      const date = text.match(regex)?.[0];
+      const dateObject = new Date(
+        date.replace(
+          /(\d{2})-(\d{2})-(\d{4}) @ (\d{2}):(\d{2}):(\d{2})/,
+          "$3-$2-$1T$4:$5:$6"
+        )
+      ).getTime();
+      const mention = { id, href, text, date: dateObject };
+      formattedMentions.push(mention);
     });
     return formattedMentions;
   }
 
   async function setUniqueMentionsToLocalStorage(formattedMentions) {
-    const mentionsLocal = await browser.storage.local.get("mentions");
-    const mentionsLocalList = mentionsLocal.mentions;
+    const storage = await browser.storage.local.get("mentions");
+    const mentionsLocalList = storage.mentions;
     if (!mentionsLocalList) {
       browser.storage.local.set({ mentions: formattedMentions });
       return;
@@ -66,7 +74,7 @@ import browser from "webextension-polyfill";
           (mention) => mention.id === id
         );
         if (!idInLocal) {
-          mentionsLocalList.unshift(mention);
+          mentionsLocalList.push(mention);
         }
       });
       browser.storage.local.set({ mentions: mentionsLocalList });
@@ -78,7 +86,6 @@ import browser from "webextension-polyfill";
       if (record.type === "childList" && record.target.id === "#jGrowl") {
         const messageWrapper =
           record.target.querySelectorAll(".jGrowl-message");
-        console.log("messageWrapper", messageWrapper);
         if (!messageWrapper.length) return;
         const formattedMentions = getFormattedMentions(messageWrapper);
         setUniqueMentionsToLocalStorage(formattedMentions);

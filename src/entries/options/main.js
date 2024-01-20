@@ -2,29 +2,33 @@ import "./style.css";
 import browser from "webextension-polyfill";
 
 (async function () {
-  const mentionsLocal = await browser.storage.local.get("mentions");
-  const mentionsLocalList = mentionsLocal.mentions;
+  const storage = await browser.storage.local.get("mentions");
+  const mentionsLocalList = storage.mentions;
   if (!mentionsLocalList) return;
+
+  const mentions = mentionsLocalList.sort((a, b) => a.date - b.date);
 
   const tbody = document.querySelector("tbody");
 
-  // TODO: sort by date
   // TODO: add pagination
+  // CHECK: if we need to sort by date, because id might be enough to sort by. Newer mentions have higher id's...
 
-  mentionsLocalList.forEach((mention) => {
+  mentions.forEach((mention) => {
     const tr = document.createElement("tr");
     const dateTd = document.createElement("td");
     const textTd = document.createElement("td");
     const deleteTd = document.createElement("td");
     const button = document.createElement("button");
     const a = document.createElement("a");
+    const date = new Date(mention.date);
+    const dateFormatted = date.toLocaleString("nl-NL", {
+      hour12: false,
+    });
+    const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
+    const textWithoutDate = mention.text.replace(regex, "");
+    const formattedText = textWithoutDate.replaceAll(/amp;/g, "");
 
-    const regex = /(\d{2}-\d{2}-\d{4})\s@\s(\d{2}:\d{2}:\d{2})/g;
-    const dateAndTime = mention.text.match(regex)?.[0];
-    const text = mention.text.replace(regex, "");
-    const formattedText = text.replace(/amp;/g, "");
-
-    dateTd.innerText = dateAndTime;
+    dateTd.innerText = dateFormatted;
     a.href = mention.href;
     a.target = "_blank";
     a.innerText = formattedText;
@@ -42,8 +46,8 @@ import browser from "webextension-polyfill";
 
   async function deleteMention(e) {
     const id = e.target.dataset.id;
-    const mentionsLocal = await browser.storage.local.get("mentions");
-    const mentionsLocalList = mentionsLocal.mentions;
+    const storage = await browser.storage.local.get("mentions");
+    const mentionsLocalList = storage.mentions;
     const newMentionsLocalList = mentionsLocalList.filter(
       (mention) => mention.id !== id
     );

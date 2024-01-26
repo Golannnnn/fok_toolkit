@@ -20,7 +20,7 @@ const sharedManifest = {
       js: ["src/entries/contentScript/mentions/main.js"],
       css: ["src/entries/contentScript/mentions/style.css"],
       matches: ["*://*.forum.fok.nl/*"],
-      run_at: "document_idle",
+      run_at: "document_end",
     },
   ],
   icons: {

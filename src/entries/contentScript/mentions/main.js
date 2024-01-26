@@ -1,7 +1,5 @@
 import browser from "webextension-polyfill";
 
-// TODO: think about combining all content scripts into one, so I dont duplicate event listeners and mutation observers
-
 (function () {
   if (window.hasMentionsRun) {
     return;
@@ -10,9 +8,9 @@ import browser from "webextension-polyfill";
 
   const doc = document.body || document || window;
 
+  const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
+
   createNavbarButton();
-  // why does chrome need a timeout here and not firefox?
-  setTimeout(() => getAllMentionsOnInit(), 500);
 
   const mentionBtn = document.querySelector(".mentions__navbar__button");
 
@@ -31,25 +29,17 @@ import browser from "webextension-polyfill";
     navbar.insertBefore(buttonContainer, navbarDmEl);
   }
 
-  function getAllMentionsOnInit() {
-    const messageWrapper = document.querySelectorAll(".jGrowl-message");
-    if (!messageWrapper?.length) return;
-    const formattedMentions = getFormattedMentions(messageWrapper);
-    setUniqueMentionsToLocalStorage(formattedMentions);
-  }
-
   function getFormattedMentions(wrapper) {
     let formattedMentions = [];
-    wrapper.forEach((message) => {
+    for (const message of wrapper) {
       const id = message.children[0].dataset.id;
       const link = message.querySelector(".quotedPostLink");
       const href = link.href;
       const text = message.textContent;
-      const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
       const date = text.match(regex)?.[0];
       const mention = { id, href, text, date };
       formattedMentions.push(mention);
-    });
+    }
     return formattedMentions;
   }
 
@@ -73,19 +63,21 @@ import browser from "webextension-polyfill";
     }
   }
 
-  const mutationCallback = (records, observer) => {
-    for (const record of records) {
-      if (record.type === "childList" && record.target.id === "#jGrowl") {
-        const messageWrapper =
-          record.target.querySelectorAll(".jGrowl-message");
-        if (!messageWrapper.length) return;
-        const formattedMentions = getFormattedMentions(messageWrapper);
-        setUniqueMentionsToLocalStorage(formattedMentions);
-      }
-    }
+  const mutationCallback = () => {
+    const jGrowl = document.getElementById("jGrowl");
+    if (!jGrowl) return;
+    const children = jGrowl.children;
+    if (!children?.length) return;
+    const messageWrappers = jGrowl.getElementsByClassName("jGrowl-message");
+    if (!messageWrappers?.length) return;
+    const formattedMentions = getFormattedMentions(messageWrappers);
+    setUniqueMentionsToLocalStorage(formattedMentions);
   };
 
   const observer = new MutationObserver(mutationCallback);
-  const config = { attributes: true, childList: true, subtree: true };
+  const config = {
+    childList: true,
+    subtree: true,
+  };
   observer.observe(doc, config);
 })();

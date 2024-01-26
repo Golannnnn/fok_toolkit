@@ -6,12 +6,11 @@ import browser from "webextension-polyfill";
   const mentionsLocalList = storage.mentions;
   if (!mentionsLocalList) return;
 
-  const mentions = mentionsLocalList.sort((a, b) => a.date - b.date);
+  const mentions = mentionsLocalList.sort((a, b) => a.id - b.id);
 
   const tbody = document.querySelector("tbody");
 
   // TODO: add pagination
-  // CHECK: if we need to sort by date, because id might be enough to sort by. Newer mentions have higher id's...
 
   mentions.forEach((mention) => {
     const tr = document.createElement("tr");
@@ -20,15 +19,11 @@ import browser from "webextension-polyfill";
     const deleteTd = document.createElement("td");
     const button = document.createElement("button");
     const a = document.createElement("a");
-    const date = new Date(mention.date);
-    const dateFormatted = date.toLocaleString("nl-NL", {
-      hour12: false,
-    });
     const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
     const textWithoutDate = mention.text.replace(regex, "");
     const formattedText = textWithoutDate.replaceAll(/amp;/g, "");
 
-    dateTd.innerText = dateFormatted;
+    dateTd.innerText = mention.date;
     a.href = mention.href;
     a.target = "_blank";
     a.innerText = formattedText;

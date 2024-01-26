@@ -11,7 +11,7 @@ import browser from "webextension-polyfill";
   const doc = document.body || document || window;
 
   createNavbarButton();
-  // why does chrome need a timeout here and not firefox???
+  // why does chrome need a timeout here and not firefox?
   setTimeout(() => getAllMentionsOnInit(), 500);
 
   const mentionBtn = document.querySelector(".mentions__navbar__button");
@@ -38,8 +38,6 @@ import browser from "webextension-polyfill";
     setUniqueMentionsToLocalStorage(formattedMentions);
   }
 
-  // CHECK: if we need to sort by date, because id might be enough to sort by. Newer mentions have higher id's...
-
   function getFormattedMentions(wrapper) {
     let formattedMentions = [];
     wrapper.forEach((message) => {
@@ -49,13 +47,7 @@ import browser from "webextension-polyfill";
       const text = message.textContent;
       const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
       const date = text.match(regex)?.[0];
-      const dateObject = new Date(
-        date.replace(
-          /(\d{2})-(\d{2})-(\d{4}) @ (\d{2}):(\d{2}):(\d{2})/,
-          "$3-$2-$1T$4:$5:$6"
-        )
-      ).getTime();
-      const mention = { id, href, text, date: dateObject };
+      const mention = { id, href, text, date };
       formattedMentions.push(mention);
     });
     return formattedMentions;

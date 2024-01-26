@@ -12,7 +12,7 @@ De extensie folders kan je hier downloaden: https://github.com/Golannnnn/fok_too
 - [x] [Gebruikers blokkeren](#blocker)
 - [x] [Plaatjes uploaden met één klik](#uploader)
 - [x] [Scrollen naar boven en beneden met één klik](#scroller)
-- [ ] Mentions geschiedenis (coming soon)
+- [x] [Mentions geschiedenis](#mentions)
 
 ## Verzoeken en bugs
 
@@ -47,6 +47,14 @@ Je moet eerst een [account aanmaken op imgbb](https://imgbb.com/signup), een [ap
 Voegt twee knoppen toe aan rechtsonder in de pagina om naar boven en beneden te scrollen:
 
 ![scroller afbeeling 1](public/readme/scroller.png)
+
+## Mentions
+
+Voegt een knop toe aan de header die linkt naar een pagina met je mentions geschiedenis:
+
+![mentions afbeeling 1](public/readme/mentions_1.png)
+
+![mentions afbeeling 2](public/readme/mentions_2.png)
 
 ## How to manually load the extension in Firefox:
 

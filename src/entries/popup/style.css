@@ -1,6 +1,7 @@
 :root {
   --bg: white;
   --text: black;
+  --link: #4337cc;
 }
 
 *,
@@ -26,6 +27,25 @@ main {
   flex-direction: column;
   gap: 10px;
   width: 350px;
+}
+
+main > p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+a:visited {
+  color: var(--link);
 }
 
 .function-container {
@@ -78,5 +98,6 @@ input[type="checkbox"] {
   :root {
     --bg: rgb(36, 36, 36);
     --text: white;
+    --link: #78acf5;
   }
 }

@@ -7,7 +7,8 @@ import browser from "webextension-polyfill";
   window.hasBlockerRun = true;
 
   const doc = document.body || document || window;
-  let posts = document.querySelectorAll("[data-member]");
+  const pageWrapper = document.getElementById("pageWrapper");
+  const posts = pageWrapper.getElementsByClassName("post");
 
   init();
 
@@ -141,11 +142,11 @@ import browser from "webextension-polyfill";
   }
 
   function performStyleOnUserPosts({ userName, display }) {
-    posts.forEach((post) => {
+    for (const post of posts) {
       if (post.dataset.member === userName) {
         post.style.display = display;
       }
-    });
+    }
   }
 
   function showQuotesOfUnblockedUsers(userName) {
@@ -190,7 +191,6 @@ import browser from "webextension-polyfill";
 
   async function blockIncomingPosts(el) {
     const userName = el.dataset.member;
-    console.log("userName posted: ", userName);
     const blockedUsers = await getUsersFromLocalStorage();
     if (blockedUsers.includes(userName)) {
       el.style.display = "none";
@@ -233,11 +233,12 @@ import browser from "webextension-polyfill";
   const mutationCallback = (records, observer) => {
     if (!document.body.classList.contains("listmessages")) {
       observer.disconnect();
+      return;
     }
 
+    //TODO: when user edits a post, apply all the logic again
     for (const record of records) {
       if (record.type === "childList" && record.target.id === "pageWrapper") {
-        posts = document.querySelectorAll("[data-member]");
         const post = record.addedNodes[0];
         if (post) {
           const header = post.querySelector(".editquote");
@@ -250,5 +251,5 @@ import browser from "webextension-polyfill";
 
   const observer = new MutationObserver(mutationCallback);
   const config = { attributes: true, childList: true, subtree: true };
-  observer.observe(doc, config);
+  observer.observe(document.getElementById("pageWrapper"), config);
 })();

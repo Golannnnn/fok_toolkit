@@ -2,8 +2,8 @@
 
 Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scripts die het forum een stukje gebruiksvriendelijker maken. De extensie is beschikbaar voor Chrome en Firefox desktop (hopelijk binnenkort ook voor mobiel).
 
-- Alleen actief wanneer je op het forum en in een topic bent (forum.fok.nl/topic/).
-- Alleen de volgende data wordt opgeslagen in de lokale opslag van je browser: gebruikersnamen van users die je blockt en een api key voor de plaatjes upload service. Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
+- Alleen actief wanneer je op het forum bent (forum.fok.nl/).
+- Alleen de volgende data wordt opgeslagen in de lokale opslag van je browser: gebruikersnamen van users die je blockt, mention tekst en een api key voor de plaatjes upload service. Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
 
 De extensie folders kan je hier downloaden: https://github.com/Golannnnn/fok_toolkit/releases/
 

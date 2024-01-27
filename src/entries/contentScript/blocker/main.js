@@ -150,10 +150,10 @@ import browser from "webextension-polyfill";
   }
 
   function showQuotesOfUnblockedUsers(userName) {
-    const quotes = document.querySelectorAll(".quote");
-    quotes.forEach((quote) => {
+    const quotes = document.getElementsByClassName("quote");
+    for (const quote of quotes) {
       if (!quote.classList.contains("blocker__quote")) {
-        return;
+        continue;
       }
       // b is the element that contains the username
       const hiddenQuote = quote?.previousElementSibling;
@@ -163,14 +163,14 @@ import browser from "webextension-polyfill";
         hiddenQuote.style.display = "block";
         quote.remove();
       }
-    });
+    }
   }
 
   function hideQuotesOfBlockedUsers(userName) {
-    const quotes = document.querySelectorAll(".quote");
-    quotes.forEach((quote) => {
+    const quotes = document.getElementsByClassName("quote");
+    for (const quote of quotes) {
       if (quote.classList.contains("blocker__quote")) {
-        return;
+        continue;
       }
       // b is the element that contains the username
       const b = quote.children?.[1];
@@ -186,7 +186,7 @@ import browser from "webextension-polyfill";
         }
       }
       // TODO: add logic to change split quotes of blocked users
-    });
+    }
   }
 
   async function blockIncomingPosts(el) {
@@ -217,9 +217,10 @@ import browser from "webextension-polyfill";
 
   async function init() {
     createNavbarButton();
-    document.querySelectorAll(".editquote").forEach((el) => {
-      createPostButtons(el);
-    });
+    const quotes = document.getElementsByClassName("editquote");
+    for (const quote of quotes) {
+      createPostButtons(quote);
+    }
     const blockedUsers = await getUsersFromLocalStorage();
     if (blockedUsers.length) {
       blockedUsers.forEach((userName) => {
@@ -236,9 +237,12 @@ import browser from "webextension-polyfill";
       return;
     }
 
-    //TODO: when user edits a post, apply all the logic again
     for (const record of records) {
-      if (record.type === "childList" && record.target.id === "pageWrapper") {
+      if (
+        record.type === "childList" &&
+        (record.target.id === "pageWrapper" ||
+          record.target.classList.contains("post"))
+      ) {
         const post = record.addedNodes[0];
         if (post) {
           const header = post.querySelector(".editquote");
@@ -250,6 +254,6 @@ import browser from "webextension-polyfill";
   };
 
   const observer = new MutationObserver(mutationCallback);
-  const config = { attributes: true, childList: true, subtree: true };
+  const config = { childList: true, subtree: true };
   observer.observe(document.getElementById("pageWrapper"), config);
 })();

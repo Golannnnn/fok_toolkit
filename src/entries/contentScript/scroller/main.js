@@ -6,7 +6,7 @@ import browser from "webextension-polyfill";
   }
   window.hasScrollerRun = true;
 
-  const pageWrapper = document.querySelector("#pageWrapper");
+  const pageWrapper = document.getElementById("pageWrapper");
   const scrollDownIcon = document.createElement("img");
   const scrollUpIcon = document.createElement("img");
 

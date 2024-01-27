@@ -34,6 +34,7 @@ import browser from "webextension-polyfill";
     for (const message of wrapper) {
       const id = message.children[0].dataset.id;
       const link = message.querySelector(".quotedPostLink");
+      if (!link) continue;
       const href = link.href;
       const text = message.textContent;
       const date = text.match(regex)?.[0];

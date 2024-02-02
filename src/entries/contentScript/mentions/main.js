@@ -69,7 +69,7 @@ import browser from "webextension-polyfill";
     if (!jGrowl) return;
     const children = jGrowl.children;
     if (!children?.length) return;
-    const messageWrappers = jGrowl.getElementsByClassName("jGrowl-message");
+    const messageWrappers = jGrowl.querySelectorAll(".jGrowl-message");
     if (!messageWrappers?.length) return;
     const formattedMentions = getFormattedMentions(messageWrappers);
     setUniqueMentionsToLocalStorage(formattedMentions);

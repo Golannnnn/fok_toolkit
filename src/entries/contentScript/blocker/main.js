@@ -8,7 +8,7 @@ import browser from "webextension-polyfill";
 
   const doc = document.body || document || window;
   const pageWrapper = document.getElementById("pageWrapper");
-  const posts = pageWrapper.getElementsByClassName("post");
+  const posts = pageWrapper.querySelectorAll(".post");
 
   init();
 
@@ -142,18 +142,18 @@ import browser from "webextension-polyfill";
   }
 
   function performStyleOnUserPosts({ userName, display }) {
-    for (const post of posts) {
+    posts.forEach((post) => {
       if (post.dataset.member === userName) {
         post.style.display = display;
       }
-    }
+    });
   }
 
   function showQuotesOfUnblockedUsers(userName) {
-    const quotes = document.getElementsByClassName("quote");
-    for (const quote of quotes) {
+    const quotes = document.querySelectorAll(".quote");
+    quotes.forEach((quote) => {
       if (!quote.classList.contains("blocker__quote")) {
-        continue;
+        return;
       }
       // b is the element that contains the username
       const hiddenQuote = quote?.previousElementSibling;
@@ -163,19 +163,20 @@ import browser from "webextension-polyfill";
         hiddenQuote.style.display = "block";
         quote.remove();
       }
-    }
+    });
   }
 
   function hideQuotesOfBlockedUsers(userName) {
-    const quotes = document.getElementsByClassName("quote");
-    for (const quote of quotes) {
+    const quotes = document.querySelectorAll(".quote");
+    quotes.forEach((quote) => {
       if (quote.classList.contains("blocker__quote")) {
-        continue;
+        return;
       }
       // b is the element that contains the username
       const b = quote.children?.[1];
       if (b) {
-        const userNameInQuote = b.children[1].textContent;
+        const userNameInQuote = b.children?.[1]?.textContent;
+        if (!userNameInQuote) return;
         if (userNameInQuote === userName) {
           const parent = quote.parentElement;
           const div = document.createElement("div");
@@ -186,7 +187,7 @@ import browser from "webextension-polyfill";
         }
       }
       // TODO: add logic to change split quotes of blocked users
-    }
+    });
   }
 
   async function blockIncomingPosts(el) {
@@ -203,7 +204,8 @@ import browser from "webextension-polyfill";
     const quote = el.querySelector(".quote");
     if (quote) {
       const b = quote.children[1];
-      const userNameInQuote = b.children[1].textContent;
+      const userNameInQuote = b.children?.[1]?.textContent;
+      if (!userNameInQuote) return;
       if (userNameInQuote === userName) {
         const parent = quote.parentElement;
         const div = document.createElement("div");
@@ -217,10 +219,9 @@ import browser from "webextension-polyfill";
 
   async function init() {
     createNavbarButton();
-    const quotes = document.getElementsByClassName("editquote");
-    for (const quote of quotes) {
-      createPostButtons(quote);
-    }
+    document.querySelectorAll(".editquote").forEach((el) => {
+      createPostButtons(el);
+    });
     const blockedUsers = await getUsersFromLocalStorage();
     if (blockedUsers.length) {
       blockedUsers.forEach((userName) => {

@@ -7,8 +7,6 @@ import browser from "webextension-polyfill";
   window.hasBlockerRun = true;
 
   const doc = document.body || document || window;
-  const pageWrapper = document.getElementById("pageWrapper");
-  const posts = pageWrapper.querySelectorAll(".post");
 
   init();
 
@@ -142,6 +140,8 @@ import browser from "webextension-polyfill";
   }
 
   function performStyleOnUserPosts({ userName, display }) {
+    const pageWrapper = document.getElementById("pageWrapper");
+    const posts = pageWrapper.querySelectorAll(".post");
     posts.forEach((post) => {
       if (post.dataset.member === userName) {
         post.style.display = display;
@@ -196,17 +196,17 @@ import browser from "webextension-polyfill";
     if (blockedUsers.includes(userName)) {
       el.style.display = "none";
     } else {
-      blockIncomingQuotes(el, userName);
+      blockIncomingQuotes(el, blockedUsers);
     }
   }
 
-  async function blockIncomingQuotes(el, userName) {
+  async function blockIncomingQuotes(el, blockedUsers) {
     const quote = el.querySelector(".quote");
     if (quote) {
       const b = quote.children[1];
       const userNameInQuote = b.children?.[1]?.textContent;
       if (!userNameInQuote) return;
-      if (userNameInQuote === userName) {
+      if (blockedUsers.includes(userNameInQuote)) {
         const parent = quote.parentElement;
         const div = document.createElement("div");
         div.textContent = `${userNameInQuote} is geblokkeerd`;

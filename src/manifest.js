@@ -34,7 +34,7 @@ const sharedManifest = {
     page: "src/entries/options/index.html",
     open_in_tab: true,
   },
-  permissions: ["activeTab", "storage"],
+  permissions: ["storage"],
 };
 
 const browserAction = {

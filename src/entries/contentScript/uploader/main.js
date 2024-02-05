@@ -47,8 +47,6 @@ import browser from "webextension-polyfill";
       const config = {
         method: "POST",
         body: formData,
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
       };
       const response = await fetch("https://api.imgbb.com/1/upload", config);
       const json = await response.json();

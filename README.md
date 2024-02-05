@@ -3,7 +3,11 @@
 Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scripts die het forum een stukje gebruiksvriendelijker maken.
 
 - Alleen actief wanneer je op het forum bent (forum.fok.nl/).
-- Deze data wordt opgeslagen in de lokale opslag van je browser: gebruikersnamen van users die je blockt, mention tekst en een api key voor de plaatjes upload service. Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
+- Deze data wordt opgeslagen in de lokale opslag van je browser:
+  - Gebruikersnamen van users die je blockt;
+  - Mention tekst;
+  - API key voor de plaatjes upload service.
+- Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
 
 ## Installatie
 

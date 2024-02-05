@@ -1,11 +1,14 @@
 # FOK!Forum Toolkit
 
-Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scripts die het forum een stukje gebruiksvriendelijker maken. De extensie is beschikbaar voor Chrome en Firefox desktop (hopelijk binnenkort ook voor mobiel).
+Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scripts die het forum een stukje gebruiksvriendelijker maken.
 
 - Alleen actief wanneer je op het forum bent (forum.fok.nl/).
-- Alleen de volgende data wordt opgeslagen in de lokale opslag van je browser: gebruikersnamen van users die je blockt, mention tekst en een api key voor de plaatjes upload service. Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
+- Deze data wordt opgeslagen in de lokale opslag van je browser: gebruikersnamen van users die je blockt, mention tekst en een api key voor de plaatjes upload service. Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
 
-De extensie folders kan je hier downloaden: https://github.com/Golannnnn/fok_toolkit/releases/
+## Installatie
+
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/fok-forum-toolkit/)
+- [Chrome](https://chromewebstore.google.com/detail/fokforum-toolkit/aeicidhhmkkbadjpbhnfbnpbokomepfh/)
 
 ## Features
 
@@ -55,18 +58,3 @@ Voegt een knop toe aan de header die linkt naar een pagina met je mentions gesch
 ![mentions afbeeling 1](public/readme/mentions_1.png)
 
 ![mentions afbeeling 2](public/readme/mentions_2.png)
-
-## How to manually load the extension in Firefox:
-
-1. Open Firefox and type `about:addons` in the URL bar.
-2. Click on the gear icon in the top right corner and select `Debug Add-ons`.
-3. Click on `Load Temporary Add-on...` and select the `manifest.json` file from the extension folder.
-4. Click on the `extensions` icon in the top right corner.
-5. Click on the `gear` icon in the top right corner and select `Pin to Toolbar`.
-
-## How to manually load the extension in Chrome:
-
-1. Open Chrome and type `chrome://extensions` in the URL bar.
-2. Enable `Developer mode` in the top right corner.
-3. Click on `Load unpacked` and select the extension folder.
-4. Click on the `extensions` icon in the top right corner and pin the extension to the toolbar.

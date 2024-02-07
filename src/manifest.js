@@ -4,21 +4,13 @@ const sharedManifest = {
   content_scripts: [
     {
       js: [
-        "src/entries/contentScript/blocker/main.js",
-        "src/entries/contentScript/uploader/main.js",
+        "src/entries/contentScript/mentions/main.js",
         "src/entries/contentScript/scroller/main.js",
       ],
       css: [
-        "src/entries/contentScript/blocker/style.css",
-        "src/entries/contentScript/uploader/style.css",
+        "src/entries/contentScript/mentions/style.css",
         "src/entries/contentScript/scroller/style.css",
       ],
-      matches: ["*://*.forum.fok.nl/topic/*"],
-      run_at: "document_end",
-    },
-    {
-      js: ["src/entries/contentScript/mentions/main.js"],
-      css: ["src/entries/contentScript/mentions/style.css"],
       matches: ["*://*.forum.fok.nl/*"],
       run_at: "document_end",
     },
@@ -45,7 +37,6 @@ const browserAction = {
     96: "icons/96.png",
   },
   default_title: "FOK!Toolkit",
-  default_popup: "src/entries/popup/index.html",
 };
 
 const ManifestV2 = {
@@ -59,10 +50,7 @@ const ManifestV2 = {
     ...sharedManifest.options_ui,
     chrome_style: false,
   },
-  permissions: [
-    ...sharedManifest.permissions,
-    "https://api.imgbb.com/1/upload",
-  ],
+  permissions: [...sharedManifest.permissions],
   web_accessible_resources: ["images/arrow-down.svg", "images/arrow-up.svg"],
 };
 
@@ -72,7 +60,7 @@ const ManifestV3 = {
   background: {
     service_worker: "src/entries/background/serviceWorker.js",
   },
-  host_permissions: ["https://api.imgbb.com/1/upload"],
+  host_permissions: [],
   web_accessible_resources: [
     {
       matches: ["*://*.forum.fok.nl/*", "https://forum.fok.nl/*"],

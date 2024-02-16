@@ -30,6 +30,10 @@ Voegt een knop toe aan de header die linkt naar een pagina met je mentions gesch
 
 ![mentions gif 1](public/readme/mentions_page.gif)
 
+Sorteren:
+
 ![mentions gif 2](public/readme/mentions_sort.gif)
+
+Link naar mentions in topic:
 
 ![mentions gif 3](public/readme/mentions_link.gif)

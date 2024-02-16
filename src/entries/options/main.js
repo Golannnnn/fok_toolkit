@@ -1,58 +1,18 @@
+import "sortable-tablesort/sortable.min.css";
+import "sortable-tablesort/sortable.min.js";
 import "./style.css";
-import browser from "webextension-polyfill";
+import Scroll from "./Scroll";
+import setStyles from "./setStyles";
+import initMentions from "./mentions";
 
 (async function () {
-  const storage = await browser.storage.local.get("mentions");
-  const mentionsLocalList = storage.mentions;
-  if (!mentionsLocalList) return;
+  // sets the font and the background image
+  await setStyles();
 
-  const mentions = mentionsLocalList.sort((a, b) => a.id - b.id);
+  // initializes the mentions table
+  initMentions();
 
-  const tbody = document.querySelector("tbody");
-
-  // TODO: add pagination
-
-  mentions.forEach((mention) => {
-    const tr = document.createElement("tr");
-    const dateTd = document.createElement("td");
-    const textTd = document.createElement("td");
-    const deleteTd = document.createElement("td");
-    const button = document.createElement("button");
-    const a = document.createElement("a");
-    const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
-    const textWithoutDate = mention.text.replace(regex, "");
-    const formattedText = textWithoutDate.replaceAll(/amp;/g, "");
-
-    dateTd.innerText = mention.date;
-    a.href = mention.href;
-    a.target = "_blank";
-    a.innerText = formattedText;
-    button.innerText = "Verwijderen";
-    button.classList.add("mentions__button__delete");
-    button.dataset.id = mention.id;
-
-    textTd.appendChild(a);
-    deleteTd.appendChild(button);
-    tr.appendChild(dateTd);
-    tr.appendChild(textTd);
-    tr.appendChild(deleteTd);
-    tbody.prepend(tr);
-  });
-
-  async function deleteMention(e) {
-    const id = e.target.dataset.id;
-    const storage = await browser.storage.local.get("mentions");
-    const mentionsLocalList = storage.mentions;
-    const newMentionsLocalList = mentionsLocalList.filter(
-      (mention) => mention.id !== id
-    );
-    browser.storage.local.set({ mentions: newMentionsLocalList });
-    e.target.parentElement.parentElement.remove();
-  }
-
-  tbody.addEventListener("click", (e) => {
-    if (e.target.classList.contains("mentions__button__delete")) {
-      deleteMention(e);
-    }
-  });
+  // initializes the scroll
+  const scroll = new Scroll();
+  scroll.init();
 })();

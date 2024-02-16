@@ -5,17 +5,66 @@
     <title>Mentions geschiedenis</title>
   </head>
   <body>
-    <h1>Mentions geschiedenis</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Datum</th>
-          <th>Mention</th>
-          <th>Verwijderen</th>
-        </tr>
-      </thead>
-      <tbody id="mentions"></tbody>
-    </table>
+    <main>
+      <header>
+        <p>mentions geschiedenis</p>
+        <div id="import-export">
+          <span>
+            <input
+              type="file"
+              id="import-btn"
+              title="importeer mentions"
+              accept=".json"
+            />
+            <label for="import-btn" id="import-label">Importeer</label>
+          </span>
+          <button id="export-btn" title="exporteer mentions">Exporteer</button>
+        </div>
+      </header>
+      <section>
+        <details>
+          <summary title="klik voor uitleg">Klik hier voor uitleg</summary>
+          <ul>
+            <li>
+              De extensie scant voor mentions op de fok forum pagina die je open
+              hebt staan en slaat deze mentions op in je lokale opslag.
+            </li>
+            <li>Je kan mentions sorteren door op de kolomnamen te klikken.</li>
+            <li>
+              Als je een mention verwijdert, moet je hem ook verwijderen op het
+              forum zelf. Anders blijft de mention terugkomen.
+            </li>
+            <li>
+              <u
+                >Als je niet al je mentions ziet: sluit deze pagina, herlaad fok
+                en open deze pagina opnieuw na een paar seconden.</u
+              >
+            </li>
+          </ul>
+        </details>
+        <button
+          id="del-all-mentions-btn"
+          title="verwijder alle mentions uit de lokale opslag"
+        >
+          Verwijder alle mentions
+        </button>
+      </section>
+      <table class="sortable asc">
+        <thead>
+          <tr>
+            <th id="date-column" title="sorteer op datum">Datum</th>
+            <th title="sorteer op gebruiker">Gebruiker</th>
+            <th title="sorteer op mention type">Mention</th>
+            <th title="sorteer op topic">Topic</th>
+            <th class="no-sort">Verwijderen</th>
+          </tr>
+        </thead>
+        <tbody id="mentions"></tbody>
+      </table>
+      <div id="pagination"></div>
+      <img src="" alt="scroll up" class="scroll__icon scroll__icon__up" />
+      <img src="" alt="scroll down" class="scroll__icon scroll__icon__down" />
+    </main>
     <script type="module" src="./main.js"></script>
   </body>
 </html>

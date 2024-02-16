@@ -8,8 +8,6 @@ import browser from "webextension-polyfill";
 
   const doc = document.body || document || window;
 
-  const regex = /\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2}/;
-
   createNavbarButton();
 
   const mentionBtn = document.querySelector(".mentions__navbar__button");
@@ -37,8 +35,8 @@ import browser from "webextension-polyfill";
       if (!link) continue;
       const href = link.href;
       const text = message.textContent;
-      const date = text.match(regex)?.[0];
-      const mention = { id, href, text, date };
+      const mention = { id, href, text };
+      console.log(id);
       formattedMentions.push(mention);
     }
     return formattedMentions;

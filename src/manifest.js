@@ -3,14 +3,8 @@ import pkg from "../package.json";
 const sharedManifest = {
   content_scripts: [
     {
-      js: [
-        "src/entries/contentScript/mentions/main.js",
-        "src/entries/contentScript/scroller/main.js",
-      ],
-      css: [
-        "src/entries/contentScript/mentions/style.css",
-        "src/entries/contentScript/scroller/style.css",
-      ],
+      js: ["src/entries/contentScript/mentions/main.js"],
+      css: ["src/entries/contentScript/mentions/style.css"],
       matches: ["*://*.forum.fok.nl/*"],
       run_at: "document_end",
     },
@@ -51,7 +45,12 @@ const ManifestV2 = {
     chrome_style: false,
   },
   permissions: [...sharedManifest.permissions],
-  web_accessible_resources: ["images/arrow-down.svg", "images/arrow-up.svg"],
+  web_accessible_resources: [
+    "images/arrow-down.svg",
+    "images/arrow-up.svg",
+    "images/options_bg.jpg",
+    "fonts/archivo-narrow-v30-latin-regular.woff2",
+  ],
 };
 
 const ManifestV3 = {
@@ -64,7 +63,12 @@ const ManifestV3 = {
   web_accessible_resources: [
     {
       matches: ["*://*.forum.fok.nl/*", "https://forum.fok.nl/*"],
-      resources: ["images/arrow-down.svg", "images/arrow-up.svg"],
+      resources: [
+        "images/arrow-down.svg",
+        "images/arrow-up.svg",
+        "images/options_bg.jpg",
+        "fonts/archivo-narrow-v30-latin-regular.woff2",
+      ],
     },
   ],
 };

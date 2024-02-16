@@ -1,6 +1,6 @@
 {
   "name": "fok-forum-toolkit",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "displayName": "FOK!forum Toolkit",
   "author": "@golannnnn",
   "description": "Een toolkit voor het FOK!forum",
@@ -21,6 +21,7 @@
     "web-ext": "^7.8.0"
   },
   "dependencies": {
+    "sortable-tablesort": "^3.1.0",
     "webextension-polyfill": "^0.10.0"
   }
 }

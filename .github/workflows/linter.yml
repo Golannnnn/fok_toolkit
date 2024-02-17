@@ -31,5 +31,6 @@ jobs:
           VALIDATE_CSS: true
           VALIDATE_HTML: true
           FILTER_REGEX_INCLUDE: .*src/.*
+          ACTIONS_RUNNER_DEBUG: true
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

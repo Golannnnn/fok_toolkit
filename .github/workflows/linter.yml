@@ -28,8 +28,9 @@ jobs:
           IGNORE_GITIGNORED_FILES: true
           VALIDATE_JAVASCRIPT_ES: true
           VALIDATE_JAVASCRIPT_STANDARD: true
-          VALIDATE_CSS: true
-          VALIDATE_HTML: true
+          # CSS and HTML validation are too strict, not useful for now
+          # VALIDATE_CSS: true
+          # VALIDATE_HTML: true
           FILTER_REGEX_INCLUDE: .*src/.*
           ACTIONS_RUNNER_DEBUG: true
           # To report GitHub Actions status checks

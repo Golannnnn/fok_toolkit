@@ -4,7 +4,6 @@
 </sub>
 FOK!forum Toolkit
 </h1>
-<h3 align="center">Een browser extensie die het foum een stukje gebruiksriendelijker probeert te maken.</h3>
 <p align="center">
   <a href="https://chromewebstore.google.com/detail/fokforum-toolkit/aeicidhhmkkbadjpbhnfbnpbokomepfh?hl=nl">
     <picture>

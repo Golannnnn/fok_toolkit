@@ -1,4 +1,9 @@
-# FOK!forum Toolkit
+<h1 align="center">
+<sub>
+<img src="public/icons/48.png">
+</sub>
+FOK!forum Toolkit
+</h1>
 
 Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scripts die het forum een stukje gebruiksvriendelijker maken.
 

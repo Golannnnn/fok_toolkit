@@ -18,7 +18,7 @@ FOK!forum Toolkit
 
 ## Wat is het?
 
-Een open-source desktop browser extensie voor het [fok!forum](https://forum.fok.nl/) met features die het foum een stukje gebruiksriendelijker probeert te maken. De extensie en alle features die er in zitten doen niks met je data en slaan informatie alleen op in de lokale opslag van je browser.
+Een open-source desktop browser extensie voor het [fok!forum](https://forum.fok.nl/) met features die het foum een stukje gebruiksvriendelijker probeert te maken. De extensie en alle features die er in zitten doen niks met je data en slaan informatie alleen op in de lokale opslag van je browser.
 
 ## Features
 

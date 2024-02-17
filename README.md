@@ -1,37 +1,41 @@
 <h1 align="center">
 <sub>
-<img src="public/icons/48.png">
+<img src="public/icons/128.png" width-"40" height="40">
 </sub>
 FOK!forum Toolkit
 </h1>
+<h3 align="center">Een browser extensie die het foum een stukje gebruiksriendelijker probeert te maken.</h3>
+<p align="center">
+  <a href="https://chrome.google.com/webstore/detail/buster-captcha-solver-for/mpbjkejclgfgadiemmefgebjfooflfhl">
+    <picture>
+      <source srcset="https://i.imgur.com/XBIE9pk.png" media="(prefers-color-scheme: dark)">
+      <img height="58" src="https://i.imgur.com/oGxig2F.png" alt="Chrome Web Store"></picture></a>
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/fok-forum-toolkit/">
+    <picture>
+      <source srcset="https://i.imgur.com/ZluoP7T.png" media="(prefers-color-scheme: dark)">
+      <img height="58" src="https://i.imgur.com/4PobQqE.png" alt="Firefox add-ons"></picture></a>
+  <br><br>
+</p>
 
-Dit is een browser extensie voor het FOK!forum. Het is een verzameling van scripts die het forum een stukje gebruiksvriendelijker maken.
+## Wat is het?
 
-- Alleen actief wanneer je op het forum bent (forum.fok.nl/).
-- Deze data wordt opgeslagen in de lokale opslag van je browser:
-  - Mention tekst;
-- Niets wordt naar een server gestuurd en je kan je lokale opslag altijd legen.
-
-## Installatie
-
-- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/fok-forum-toolkit/)
-- [Chrome](https://chromewebstore.google.com/detail/fokforum-toolkit/aeicidhhmkkbadjpbhnfbnpbokomepfh/)
+Een open-source desktop browser extensie voor het [fok!forum](https://forum.fok.nl/) met features die het foum een stukje gebruiksriendelijker probeert te maken. De extensie en alle features die er in zitten doen niks met je data en slaan informatie alleen op in de lokale opslag van je browser.
 
 ## Features
 
 - [x] [Mentions geschiedenis](#mentions)
 
-## Verzoeken en bugs
+## Verzoeken, opmerkingen of bugs?
 
-Heb je een verzoek voor een nieuwe feature? Of een bug? Laat het weten in [coming soon](https://forum.fok.nl/topic/).
+Plaats een reactie op het [het topic in fok](). Of plaats een [issue](https://github.com/Golannnnn/fok_toolkit/issues).
 
-## Meehelpen
+## Wil je mee helpen ontwikkelen?
 
-De extensie is open source en iedereen kan meehelpen. Fork de repo, lees de [HOWTO](HOWTO.md) en maak een pull request. Kom je er niet uit? Stel je vraag in [coming soon](https://forum.fok.nl/topic/).
+Dat zou super cool zijn. Lees hier de [HOWTO](./HOWTO.md) om het project lokaal op te zetten en plaats een PR.
 
 ## Mentions
 
-Voegt een knop toe aan de header die linkt naar een pagina met je mentions geschiedenis:
+Deze feature slaat je mentions op in de lokale opslag van je browser zodat je ze later altijd terug kan kijken. Je kan je mentions overzichtelijk zien, sorteren, exporteren en importeren en compleet verwijderen.
 
 ![mentions gif 1](public/readme/mentions_page.gif)
 

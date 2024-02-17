@@ -27,7 +27,7 @@ Een open-source desktop browser extensie voor het [fok!forum](https://forum.fok.
 
 ## Verzoeken, opmerkingen of bugs?
 
-Plaats een reactie op het [het topic in fok](https://forum.fok.nl/topic/2702870/fok-forum-toolkit-browser-extensie.html). Of plaats een [issue](https://github.com/Golannnnn/fok_toolkit/issues).
+Plaats een reactie op het [het topic op fok](https://forum.fok.nl/topic/2702870/fok-forum-toolkit-browser-extensie.html). Of plaats een [issue](https://github.com/Golannnnn/fok_toolkit/issues).
 
 ## Wil je mee helpen ontwikkelen?
 

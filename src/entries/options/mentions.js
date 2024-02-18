@@ -18,7 +18,7 @@ const state = {
 };
 
 const regex =
-  /(\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2})\s*([^\s]+)\s*heeft.*(gequote|geliket)\s*in(?:\s*topic)?\s*"(.*?)"/;
+  /(\d{2}-\d{2}-\d{4} @ \d{2}:\d{2}:\d{2})\s*([^\s]+)\s*heeft.*(gequote|geliket|genoemd)\s*in(?:\s*topic)?\s*"(.*?)"/;
 
 const dateColumn = document.getElementById("date-column");
 
@@ -271,9 +271,22 @@ function parseMention(text) {
     return null;
   }
   const [, date, user, type, topic] = matches;
-  const mentionType = type == "gequote" ? "Quote" : "Like";
+  const mentionType = getMentionType(type);
   const formattedTopic = topic.replaceAll(/amp;/g, "");
   return { date, user, type: mentionType, topic: formattedTopic };
+}
+
+function getMentionType(type) {
+  switch (type) {
+    case "gequote":
+      return "Quote";
+    case "geliket":
+      return "Like";
+    case "genoemd":
+      return "Mention";
+    default:
+      return "Unknown";
+  }
 }
 
 function createTableRow() {

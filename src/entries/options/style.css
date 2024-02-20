@@ -266,7 +266,52 @@ tbody tr > td:nth-child(5) {
   pointer-events: none;
 }
 
-@media (max-width: 700px) {
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: #1a1d20;
+  }
+
+  header {
+    position: absolute;
+  }
+
+  header > p {
+    display: none;
+  }
+
+  section {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  details {
+    width: 100%;
+  }
+
+  #del-all-mentions-btn {
+    width: 200px;
+  }
+
+  main {
+    padding: 60px 0px 25px 0px;
+  }
+
+  .mentions__button__delete {
+    height: 18px;
+    width: 18px;
+  }
+
+  .scroll__icon {
+    display: none;
+  }
+
+  th,
+  td {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 990px) {
   header {
     justify-content: space-between;
   }

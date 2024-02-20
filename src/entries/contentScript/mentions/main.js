@@ -8,13 +8,32 @@ import browser from "webextension-polyfill";
 
   const doc = document.body || document || window;
 
-  createNavbarButton();
+  let mentionBtn;
 
-  const mentionBtn = document.querySelector(".mentions__navbar__button");
+  if (navigator.userAgent.includes("Android")) {
+    createNavbarButtonAndroid();
+    mentionBtn = document.querySelector(".mentions__navbar__button_android");
+  } else {
+    createNavbarButton();
+    mentionBtn = document.querySelector(".mentions__navbar__button");
+  }
 
   mentionBtn.addEventListener("click", function () {
     browser.runtime.sendMessage("showOptions");
   });
+
+  function createNavbarButtonAndroid() {
+    const menu = document.getElementById("fok");
+    if (!menu) return;
+    const ul = menu.children[1];
+    if (!ul) return;
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.textContent = "mentions";
+    a.classList.add("mentions__navbar__button_android");
+    li.appendChild(a);
+    ul.appendChild(li);
+  }
 
   function createNavbarButton() {
     const navbar = document.querySelector(".topbarbody");

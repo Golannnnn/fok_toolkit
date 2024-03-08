@@ -255,6 +255,7 @@ a {
 }
 
 table {
+  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -317,19 +318,19 @@ tbody tr:hover {
   opacity: 1;
 }
 
-.scroll__icon {
+#scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 25px;
+}
+
+.scroll__icon {
   cursor: pointer;
-  right: 30px;
   opacity: 0.7;
-}
-
-.scroll__icon__down {
-  bottom: 25px;
-}
-
-.scroll__icon__up {
-  bottom: 75px;
 }
 
 .scroll__icon:hover {
@@ -393,7 +394,8 @@ tbody tr:hover {
   }
 
   main {
-    padding: 60px 0px 25px 0px;
+    padding: 60px 0px 80px 0px;
+    width: 100%;
   }
 
   .mentions__button__delete {
@@ -401,8 +403,13 @@ tbody tr:hover {
     width: 18px;
   }
 
+  #scroll-container {
+    padding: 20px;
+    background-color: var(--main-bg-color);
+  }
+
   .scroll__icon {
-    display: none;
+    opacity: 1;
   }
 
   th,
@@ -411,8 +418,7 @@ tbody tr:hover {
   }
 
   .user-td {
-    max-width: 200px;
-    min-width: max-content;
+    min-width: 80px;
     white-space: wrap;
     word-break: break-all;
   }

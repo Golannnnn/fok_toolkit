@@ -3,7 +3,7 @@ import navBtn from "./components/navButton";
 import { saveItemsToNewFormat } from "./logic/saveItemsToNewFormat";
 import { config, observer } from "./logic/mutationObserver";
 
-(function () {
+(async function () {
   if (window.hasMentionsRun) {
     return;
   }
@@ -15,7 +15,7 @@ import { config, observer } from "./logic/mutationObserver";
   });
 
   // for users with old items still in storage
-  saveItemsToNewFormat();
+  await saveItemsToNewFormat();
 
   // mutation observer to watch for new alerts
   observer.observe(document, config);

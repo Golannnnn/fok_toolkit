@@ -9,19 +9,6 @@ const scrollDownIcon = browser.runtime.getURL("images/arrow-down.svg");
 scrollUpEl.setAttribute("src", scrollUpIcon);
 scrollDownEl.setAttribute("src", scrollDownIcon);
 
-function scrollDisplay(style) {
-  scrollUpEl.style.display = style;
-  scrollDownEl.style.display = style;
-}
-
-function updateIconsDisplay() {
-  if (window.innerWidth < 1150) {
-    scrollDisplay("none");
-  } else {
-    scrollDisplay("block");
-  }
-}
-
 function onClickScrollDown() {
   window.scrollTo(0, document.body.scrollHeight);
 }
@@ -31,11 +18,6 @@ function onClickScrollUp() {
 }
 
 export function addScrollEventListeners() {
-  window.addEventListener("resize", updateIconsDisplay);
   scrollDownEl.addEventListener("click", onClickScrollDown);
   scrollUpEl.addEventListener("click", onClickScrollUp);
-
-  if (window.innerWidth < 1150) {
-    scrollDisplay("none");
-  }
 }

@@ -45,12 +45,7 @@ const ManifestV2 = {
     chrome_style: false,
   },
   permissions: [...sharedManifest.permissions],
-  web_accessible_resources: [
-    "images/arrow-down.svg",
-    "images/arrow-up.svg",
-    "images/options_bg.jpg",
-    "fonts/archivo-narrow-v30-latin-regular.woff2",
-  ],
+  web_accessible_resources: ["images/arrow-down.svg", "images/arrow-up.svg"],
 };
 
 const ManifestV3 = {
@@ -58,17 +53,13 @@ const ManifestV3 = {
   action: browserAction,
   background: {
     service_worker: "src/entries/background/serviceWorker.js",
+    type: "module",
   },
   host_permissions: [],
   web_accessible_resources: [
     {
       matches: ["*://*.forum.fok.nl/*", "https://forum.fok.nl/*"],
-      resources: [
-        "images/arrow-down.svg",
-        "images/arrow-up.svg",
-        "images/options_bg.jpg",
-        "fonts/archivo-narrow-v30-latin-regular.woff2",
-      ],
+      resources: ["images/arrow-down.svg", "images/arrow-up.svg"],
     },
   ],
 };
